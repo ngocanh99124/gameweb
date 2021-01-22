@@ -1,0 +1,11 @@
+﻿.detail
+{
+    background-color:honeydew;
+    position:absolute;
+    border-style : double;
+    left:10%;
+    right:10%;
+    width:100%;
+    height:500px;
+    top :10%;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6933ea6215c48a8b403167e9a1428b0" Name="Diagram1">
+        <EntityTypeShape EntityType="GameSQLModel.BanBe" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameSQLModel.LoiMoiKB" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameSQLModel.NguoiChoi" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameSQLModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GameSQLModel.FK__BanBe__Ten1__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="GameSQLModel.FK__BanBe__Ten2__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="GameSQLModel.FK__LoiMoiKB__TenGui__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="GameSQLModel.FK__LoiMoiKB__TenNha__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

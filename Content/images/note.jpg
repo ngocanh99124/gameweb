@@ -1,0 +1,8 @@
+- normalize lại: ko bị thừa dấu cách nhiều quá
+- chỉnh lại phần xem biển số, ngày, chuẩn hóa số
+_+ Phần biển số đọc chuẩn
++ phần ngày tháng năm, ví dụ: (từ ngày 4.1.2017 - 4.1.2018) => từ ngày bốn tháng một năm 2017 đến ngày bốn tháng 1 .. Code hiện tại:từ ngày bốn tháng một năm 2017 - bốn tháng 1...
+từ tháng  ba  đến   mười hai nghìn không trăm linh mười bẩy(3-10/2017)
++ phần đọc số hàng nghìn chục nghìn chưa chuẩn: nghìn không trăm linh bẩy mươi bốn,
++16.106:mười sáu một trăm sáu(không đúng)
+- xóa dấu cách, gạch ngang, chấm, không chuyển . thành chấm.

@@ -1,0 +1,379 @@
+﻿.boy_run_left {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Run__000.png');
+    animation-name: boy_run_left_animation;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    transform: translate(50px, 0);
+}
+
+@keyframes boy_run_left_animation {
+    0% {
+        background-image: url('/Content/image/boy/Run__000.png');
+        transform: translate(5px, 0);
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Run__001.png');
+        transform: translate(10px, 0);
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Run__002.png');
+        transform: translate(15px, 0);
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Run__003.png');
+        transform: translate(20px, 0);
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Run__004.png');
+        transform: translate(25px, 0);
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Run__005.png');
+        transform: translate(30px, 0);
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Run__006.png');
+        transform: translate(35px, 0);
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Run__007.png');
+        transform: translate(40px, 0);
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Run__008.png');
+        transform: translate(45px, 0);
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Run__009.png');
+        transform: translate(50px, 0);
+    }
+}
+
+.boy_run_right {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Run__000.png');
+    transform: rotateY(180deg);
+    animation-name: boy_run_right_animation;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    transform: translate(-50px, 0);
+}
+
+@keyframes boy_run_right_animation {
+    0% {
+        background-image: url('/Content/image/boy/Run__000.png');
+        transform: translate(-5px, 0);
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Run__001.png');
+        transform: translate(-10px, 0);
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Run__002.png');
+        transform: translate(-15px, 0);
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Run__003.png');
+        transform: translate(-20px, 0);
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Run__004.png');
+        transform: translate(-25px, 0);
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Run__005.png');
+        transform: translate(-30px, 0);
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Run__006.png');
+        transform: translate(-35px, 0);
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Run__007.png');
+        transform: translate(-40px, 0);
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Run__008.png');
+        transform: translate(-45px, 0);
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Run__009.png');
+        transform: translate(-50px, 0);
+    }
+}
+
+.boy_attack_left {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Attack__000.png');
+    animation-name: boy_attack;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.boy_attack_right {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Attack__000.png');
+    transform: rotateY(180deg);
+    animation-name: boy_attack;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes boy_attack {
+    0% {
+        background-image: url('/Content/image/boy/Attack__000.png');
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Attack__001.png');
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Attack__002.png');
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Attack__003.png');
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Attack__004.png');
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Attack__005.png');
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Attack__006.png');
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Attack__007.png');
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Attack__008.png');
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Attack__009.png');
+    }
+}
+
+
+.boy_idle_left {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Idle_000.png');
+    animation-name: boy_idle;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.boy_idle_right {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Idle_000.png');
+    transform: rotateY(180deg);
+    animation-name: boy_idle;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes boy_idle {
+    0% {
+        background-image: url('/Content/image/boy/Idle__000.png');
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Idle_001.png');
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Idle_002.png');
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Idle_003.png');
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Idle_004.png');
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Idle_005.png');
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Idle_006.png');
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Idle_007.png');
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Idle_008.png');
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Idle_009.png');
+    }
+}
+
+.boy_Jump_left {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Jump__000.png');
+    animation-name: boy_jump_animation;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.boy_Jump_right {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Jump__000.png');
+    transform: rotateY(190deg);
+    animation-name: boy_jump_animation;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes boy_jump_animation {
+    0% {
+        background-image: url('/Content/image/boy/Jump__000.png');
+        transform: translate(0, 5px);
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Jump__001.png');
+        transform: translate(0, 10px);
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Jump__002.png');
+        transform: translate(0, 15px);
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Jump__003.png');
+        transform: translate(0, 20px);
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Jump__004.png');
+        transform: translate(0, 25px);
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Jump__005.png');
+        transform: translate(0, 20px);
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Jump__006.png');
+        transform: translate(0, 15px);
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Jump__007.png');
+        transform: translate(0, 10px);
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Jump__008.png');
+        transform: translate(0, 5px);
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Jump__009.png');
+        transform: translate(0, 0);
+    }
+}
+
+.boy_dead_left {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Dead_000.png');
+    animation-name: boy_Dead;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.boy_dead_right {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/Content/image/boy/Dead_000.png');
+    transform: rotateY(180deg);
+    animation-name: boy_Dead;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes boy_Dead {
+    0% {
+        background-image: url('/Content/image/boy/Dead_000.png');
+    }
+
+    10% {
+        background-image: url('/Content/image/boy/Dead_001.png');
+    }
+
+    20% {
+        background-image: url('/Content/image/boy/Dead_002.png');
+    }
+
+    30% {
+        background-image: url('/Content/image/boy/Dead_003.png');
+    }
+
+    40% {
+        background-image: url('/Content/image/boy/Dead_004.png');
+    }
+
+    50% {
+        background-image: url('/Content/image/boy/Dead_005.png');
+    }
+
+    60% {
+        background-image: url('/Content/image/boy/Dead_006.png');
+    }
+
+    70% {
+        background-image: url('/Content/image/boy/Dead_007.png');
+    }
+
+    80% {
+        background-image: url('/Content/image/boy/Dead_008.png');
+    }
+
+    100% {
+        background-image: url('/Content/image/boy/Dead_009.png');
+    }
+}

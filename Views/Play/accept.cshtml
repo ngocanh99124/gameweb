@@ -1,0 +1,67 @@
+﻿@using GameWeb_XL.Models
+@model TwoModel
+@{
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+}
+<div id="list" class="row list-group">
+    @foreach (var it in @Model.Invite)
+    {
+        <div class="item  col-xs-3 col-lg-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading"> @it.Ten</h4>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p type="button" class="yes" id=@it.Ten onclick="chon(@serializer.Serialize(it.Ten))" style="position: absolute; width:40px; height: 40px; right:15%; top: 20%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+        var socket = new WebSocket("ws://localhost:8080/WebApplication5/endpoint");
+        socket.onopen = function () { processOnOpen(); }
+        socket.onclose = function () { processOnClose(); }
+        function processOnClose() {
+            console.log("close to server!");
+        }
+        function processOnOpen() {
+            console.log("connect connect!");
+    }
+    var toString = Object.prototype.toString;
+
+    isString = function (obj) {
+        return toString.call(obj) == '[object String]';
+    }
+    function chon(id) {
+
+        var player = getCookie("userID");
+            var json = {};
+            if (isString(id))
+                json = { "status": 2, "player": player, "friend": id };
+            else {
+                var sid = String(id);
+                json = { "status": 2, "player": player, "friend": sid };
+            }
+        var mess = JSON.stringify(json);
+        socket.send(mess);
+        window.location.href = '@Url.Action("ready","Play")';
+    }
+</script>

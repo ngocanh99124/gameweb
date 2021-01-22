@@ -1,0 +1,118 @@
+﻿.boy {
+    position: absolute;
+    background-image: url(image/boy/Attack__000.png);
+    animation-name: boy;
+    background-size: contain;
+    background-repeat:no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+@keyframes boy
+{
+    0%  {
+        background-image:url(image/boy/Attack__000.png);
+
+    }
+    10% {
+        background-image:url(image/boy/Attack__001.png);
+
+    }
+    20% {
+        background-image: url(image/boy/Attack__002.png);
+    }
+    30% {
+        background-image: url(image/boy/Attack__003.png);
+    }
+    40% {
+        background-image: url(image/boy/Attack__004.png);
+    }
+    50% {
+        background-image: url(image/boy/Attack__005.png);
+    }
+    60% {
+        background-image: url(image/boy/Attack__006.png);
+    }
+    70% {
+        background-image: url(image/boy/Attack__007.png);
+    }
+    80% {
+        background-image: url(image/boy/Attack__008.png);
+    }
+    90% {
+        background-image: url(image/boy/Attack__009.png);
+    }
+    100% {
+        background-image: url(image/boy/Attack__000.png);
+    }
+}
+
+.girl {
+    animation-name: girl;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+@keyframes girl
+{
+    0% {
+        background-image : url(image/girl/Attack__000.png);
+    }
+    10% {
+        background-image: url(image/girl/Attack__001.png);
+    }
+    20% {
+        background-image: url(image/girl/Attack__002.png);
+    }
+    30% {
+        background-image: url(image/girl/Attack__003.png);
+    }
+    40% {
+        background-image: url(image/girl/Attack__004.png);
+    }
+    50% {
+        background-image: url(image/girl/Attack__005.png);
+    }
+    60% {
+        background-image: url(image/girl/Attack__006.png);
+    }
+    70% {
+        background-image: url(image/girl/Attack__007.png);
+    }
+    80% {
+        background-image: url(image/girl/Attack__008.png);
+    }
+    90% {
+        background-image: url(image/girl/Attack__009.png);
+    }
+    100% {
+        background-image: url(image/girl/Attack__000.png);
+    }
+}
+
+
+.countDown {
+    position: absolute;
+    animation-name: countDown;
+    background-size: contain;
+    background-image: url(image/3.png);
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+    animation-delay: 2s;
+}
+
+@keyframes countDown
+{
+    0% {
+        background-image : url(image/3.png);
+    }
+    70% {
+        background-image : url(image/2.png);
+    }
+    100% {
+        background-image : url(image/1.png);
+    }
+}

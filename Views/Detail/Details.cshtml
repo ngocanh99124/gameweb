@@ -1,0 +1,122 @@
+﻿@using GameWeb_XL.Models;
+@model GameWeb_XL.Models.NguoiChoi
+@{
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/Content/css/detail.css" />
+    <title>Index</title>
+</head>
+<body>
+    <style>
+        #content {
+            background: #000000bf;
+        }
+        .info_player {
+            /*background-image: url("/Content/image/info.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;*/
+            background: #532b2b;
+            height: 329px;
+            margin-top: 11%;
+            position: relative;
+            margin-left: 27px;
+            color: rgba(0,0,0,5);
+        }
+        #file_upl {
+            position: absolute;
+            bottom: 1%;
+            padding: 10rem;
+            cursor:pointer;
+        }
+        #file_upl1 {
+            background:red;
+            position: absolute;
+            bottom: 1%;
+            padding: 1rem;
+            cursor: pointer;
+            width:86%;
+            text-align:center;
+        }
+        .info_header {
+            padding-top: 5px;
+            padding-left: 16px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid black;
+        }
+        .info_player > p {
+            font-size: 2rem;
+            color: rgba(0,0,0,5);
+        }
+
+        .name_info {
+            position: absolute;
+            top: 20%;
+            left: 2%;
+        }
+
+        .level_info {
+            position: absolute;
+            top: 33%;
+            left: 2%;
+        }
+
+        .ChinhSua {
+            font-size: 1.5rem;
+            margin-bottom:100px;
+        }
+
+        button {
+            background-color: #ffd800;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form action="/Detail/Upload_Img" class="card" method="post" enctype="multipart/form-data">
+
+                            @*<label for="change_avt" id="lb_change_avt">Upload Avatar</label><br />*@
+                            <label for="change_avt" id="file_upl"></label>
+                            <input type="submit" for="change_avt" id="file_upl1">Upload</>
+                            <input type="file" name="imageFile" id="change_avt" style="display:none !important" required>
+                            <br />
+                            @*<input type="submit" id="btn_upload" value="Upload" class="d-none" />*@
+                        </form>
+                        <img src="@Model.HinhAnh" class="img-fluid" style="width:93%;margin-top:54px;" />
+                    </div>
+                    <div class="col-md-offset-5">
+                        <div class="info_player">
+                            <p class="info_header">Information</p>
+                            
+                            <p class="name_info">Name:@Model.Ten</p>
+                            <p class="level_info">Level: @Model.CapDo</p>
+                        </div>
+                        
+                        <div class="col-md-offset-4">
+                            <div class="ChinhSua">
+                                <button name="button" value="OK" type="button" onclick="hello()">Change PassWord</button>
+                            </div>
+                        </div>
+                        <div class="form-horizontal">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function hello() {
+            location.assign("/Login/ChangePass");
+        }
+    </script>
+</body>
+</html>

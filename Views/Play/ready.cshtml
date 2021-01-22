@@ -1,0 +1,74 @@
+﻿ @{
+    Layout = null;
+} 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        body {
+            background-image: url(/Content/image/31390.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <link rel="stylesheet" href="/Content/characters.css">
+</head>
+<body>
+    <div id="myavt" style="position:absolute;width : 20%; height : 50%; top : 45%; left: 20%"></div>
+    <div class="countDown" style="width : 14%; height : 30%; top : 40%; right:43%"></div>
+    <div id="friendavt" style="position:absolute;width : 20%; height:50%; top :45%; right:20%; transform:rotateY(180deg)"></div>
+    <script>
+        
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+         }
+        }
+    return "";
+    }
+        var avt = @Request.Cookies["avt"].Value;
+        if (avt == 0)
+            document.getElementById("myavt").className = "boy";
+        else
+            document.getElementById("myavt").className = "girl";
+        var socket = new WebSocket("ws://localhost:8080/WebApplication5/endpoint");
+        socket.onopen = function () { processOnOpen(); }
+        socket.onclose = function () { processOnClose(); }
+        socket.onmessage = function () { processOnMessage(message); }
+        function processOnClose() {
+            var timer = setTimeout(function () {
+            window.location.href = '@Url.Action("Index","Play")'
+            }, 3700);
+        }
+        function processOnOpen() {
+            console.log("connect connect!");
+            var player = getCookie("userID");
+            var json = { "status": -2, "player": player};
+            var mess = JSON.stringify(json);
+            socket.send(mess);
+        }
+        
+        socket.onmessage = function processOnMessage(message) {
+            var json = JSON.parse(message.data);
+            var avt = json.avt;
+            if (avt == 0)
+            document.getElementById("friendavt").className = "boy";
+        else
+                document.getElementById("friendavt").className = "girl";
+            socket.close();
+        }
+        
+
+    </script>
+</body>
+</html>

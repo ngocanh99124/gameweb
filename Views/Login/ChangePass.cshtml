@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+@model GameWeb_XL.Models.LoginModel
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <link rel="stylesheet" href="/Content/Site.css">
+    <script src="~/Content/login.js"></script>
+</head>
+<body>
+
+    <div class="login-box">
+
+        <div class="social-login">
+            <a>
+                <i class="fa fa-facebook fa-lg"></i>
+                Change PassWord
+            </a>
+
+        </div>
+        <div style="left:30%; top:30%;width:100%; position:absolute">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <font color="red"> @Html.ValidationSummary(true)</font>
+                <form class="email-login">
+                    <div class="u-form-group">
+                        @Html.TextBoxFor(model => model.Ten, new { @type = "text-danger", @onkeyup = "show()", @id = "userName", @placeholder = User.Identity.Name, @autofocus = "autofocus" })
+
+                    </div>
+                    <div class="u-form-group">
+                        @Html.TextBox("MatKhauCu", "", new { @type = "password", @id = "OldPass", @placeholder = "Old PassWord", @autofocus = "autofocus" })
+
+                    </div>
+                    <div class="u-form-group">
+                        @Html.TextBoxFor(model => model.MatKhau, new { @type = "password", @id = "NewPass", @placeholder = "New PassWord", @autofocus = "autofocus" })
+
+                    </div>
+                    <span id="match" style="text-align:center; margin-left:15px"></span>
+                    <div class="u-form-group">
+                        @Html.TextBoxFor(model => model.MatKhauConfirm, new { @type = "password", @onkeyup = "Confirm()", @id = "reNewpass", @placeholder = "Confirm New PassWord", @autofocus = "autofocus" })
+
+                    </div>
+                    <div class="u-form-group">
+                        <!-- <button >Log in</button> -->
+                        <button type="submit" onclick="Change()" class="btn btn-lg btn-success btn-block"> Save </button>
+
+                    </div>
+                    <script>
+
+                        function Confirm() {
+                            var pass1 = document.getElementById("NewPass").Value.toString();
+                            var pass2 = document.getElementById("reNewpass").Value.toString();
+                            if (pass1 != pass2) {
+                                document.getElementById("match").style.color = "red";
+                                document.getElementById("match").innerHTML = "Don't match";
+
+                                check = 0;
+                                //document.getElementById("match").style.transitionDelay = 2s;
+                            }
+                            else {
+                                alert(pass1);
+                                document.getElementById("match").style.color = "green";
+                                document.getElementById("match").innerHTML = "correct";
+                            }
+                        }
+                    </script>
+                </form>
+            }
+
+        </div>
+    </div>
+</body>
+</html>

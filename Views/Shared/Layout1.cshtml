@@ -1,0 +1,181 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Game Ninja </title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Game Ninja" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- gallery -->
+    <link rel="stylesheet" href="/Content/css/lightGallery.css" type="text/css" media="all" />
+    <!-- //gallery -->
+    <!-- font-awesome icons -->
+    <link href="/Content/css/font-awesome.css" rel="stylesheet">
+
+    <!-- //font-awesome icons -->
+    <link href="fonts/.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link href="fonts/.googleapis.com/css?family=Jura:300,400,500,600" rel="stylesheet">
+    <link href='fonts/.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header">
+        <div class="w3layouts_header_left">
+            <div class="top-nav-text">
+                <p>Call Us : <span class="call">+00 111 2222 333</span></p>
+                <p>Email Us : <span class="mail"><a href="mailto:info@example.com">info@example.com</a></span></p>
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+    <div class="w3_navigation">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header navbar-left">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="w3_navigation_pos">
+                        <h1><a href="@Url.Action("pickAVT", "Play")">Game Ninja</a></h1>
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                    <nav class="cl-effect-5" id="cl-effect-5">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="@Url.Action("AuthorHome", "Home")" class="elements">
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li><a href="#about" class="scroll"><span data-hover="About">About</span></a></li>
+                            <li style="width: 45%"><a href="#work" class="scroll" style="width: 20%"><span data-hover="Gallery">Gallery</span></a></li>
+                            <li>
+                                <a href="@Url.Action("Index", "Detail", new { id = @Request.Cookies["userID"].Value })">
+                                    <span data-hover=@Request.Cookies["userID"].Value>@Request.Cookies["userID"].Value</span>
+                                </a>
+                            </li>
+                            <li><a href="@Url.Action("logout", "Login")"><span data-hover="Logout">Logout</span></a></li>
+                            <li><a href="#mail" class="scroll"><span data-hover="Contact">Contact</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- //header -->
+    <div id="content">
+        @RenderBody()
+    </div>
+    <!--banner Slider starts Here-->
+    <script src="/Content/js/jquery-2.2.3.min.js"></script>
+    <script src="/Content/js/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: false,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <!-- js -->
+    <!-- start-smoth-scrolling -->
+    <script src="/Content/js/lightGallery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#lightGallery").lightGallery({
+                mode: "fade",
+                speed: 800,
+                caption: true,
+                desc: true,
+                mobileSrc: true
+            });
+        });
+    </script>
+
+    <script src="/Content/js/owl.carousel.js"></script>
+    <link href="/Content/css/owl.theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.css" type="text/css" media="all">
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 3000, //Set AutoPlay to 3 seconds
+                autoPlay: true,
+                navigation: true,
+
+                items: 4,
+                itemsDesktop: [640, 5],
+                itemsDesktopSmall: [414, 4]
+
+            });
+
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/Content/js/move-top.js"></script>
+    <script type="text/javascript" src="/Content/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- //js -->
+    <script src="/Content/js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <!-- //here ends scrolling icon -->
+</body>
+</html>

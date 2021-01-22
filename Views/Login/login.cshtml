@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+@model GameWeb_XL.Models.LoginModel
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <link rel="stylesheet" href="/Content/Site.css">
+    <script src="~/Content/login.js"></script>
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="lb-header">
+            <a href="#" class="active" id="login-box-link">Login</a>
+            <a href="Signup" id="signup-box-link">Sign Up</a>
+        </div>
+        <div class="social-login">
+            <a href="#">
+                <i class="fa fa-facebook fa-lg"></i>
+                Login in with facebook
+            </a>
+            <a href="#">
+                <i class="fa fa-google-plus fa-lg"></i>
+                log in with Google
+            </a>
+        </div>
+        <div style="left:30%; top:30%;width:100%; position:absolute">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <font color="red"> @Html.ValidationSummary(true)</font>
+                <form class="email-login">
+                    <div class="u-form-group" style="left:30%;right:30%">
+                        @Html.TextBoxFor(model => model.Ten, new { @type = "text", @placeholder = "Username", @autofocus = "autofocus", @style = "left:30%" });
+                    </div>
+                    <div class="u-form-group">
+                        @Html.TextBoxFor(model => model.MatKhau, new { @type = "password", @placeholder = "Username", @autofocus = "autofocus" })
+
+                    </div>
+                    <div class="u-form-group">
+                        <!-- <button >Log in</button> -->
+                        <button type="submit" class="btn btn-lg btn-success btn-block"> Login </button>
+
+
+                    </div>
+                    <div class="u-form-group" style="position:center">
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</body>
+</html>
+

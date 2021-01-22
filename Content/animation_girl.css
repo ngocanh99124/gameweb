@@ -1,0 +1,399 @@
+﻿.girl_run_left {
+    width: 188px;
+    height: 260px;
+    background-image: url(image/girl/Run__000.png);
+    animation-name: girl_run_left_animation;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+    transform: translate(50px, 0);
+}
+
+@keyframes girl_run_left_animation {
+    0% {
+        background-image: url(image/girl/Run__000.png);
+        transform: translate(5px, 0);
+    }
+
+    10% {
+        background-image: url(image/girl/Run__001.png);
+        transform: translate(10px, 0);
+    }
+
+    20% {
+        background-image: url(image/girl/Run__002.png);
+        transform: translate(15px, 0);
+    }
+
+    30% {
+        background-image: url(image/girl/Run__003.png);
+        transform: translate(20px, 0);
+    }
+
+    40% {
+        background-image: url(image/girl/Run__004.png);
+        transform: translate(25px, 0);
+    }
+
+    50% {
+        background-image: url(image/girl/Run__005.png);
+        transform: translate(30px, 0);
+    }
+
+    60% {
+        background-image: url(image/girl/Run__006.png);
+        transform: translate(35px, 0);
+    }
+
+    70% {
+        background-image: url(image/girl/Run__007.png);
+        transform: translate(40px, 0);
+    }
+
+    80% {
+        background-image: url(image/girl/Run__008.png);
+        transform: translate(45px, 0);
+    }
+
+    100% {
+        background-image: url(image/girl/Run__009.png);
+        transform: translate(50px, 0);
+    }
+}
+
+.girl_run_right {
+    width: 188px;
+    height: 260px;
+    background-image: url(image/girl/Run__000.png);
+    transform: rotateY(180deg);
+    animation-name: girl_run_right_animation;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+    transform: translate(-50px, 0);
+}
+
+@keyframes girl_run_right_animation {
+    0% {
+        background-image: url(image/girl/Run__000.png);
+        transform: translate(-5px, 0);
+    }
+
+    10% {
+        background-image: url(image/girl/Run__001.png);
+        transform: translate(-10px, 0);
+    }
+
+    20% {
+        background-image: url(image/girl/Run__002.png);
+        transform: translate(-15px, 0);
+    }
+
+    30% {
+        background-image: url(image/girl/Run__003.png);
+        transform: translate(-20px, 0);
+    }
+
+    40% {
+        background-image: url(image/girl/Run__004.png);
+        transform: translate(-25px, 0);
+    }
+
+    50% {
+        background-image: url(image/girl/Run__005.png);
+        transform: translate(-30px, 0);
+    }
+
+    60% {
+        background-image: url(image/girl/Run__006.png);
+        transform: translate(-35px, 0);
+    }
+
+    70% {
+        background-image: url(image/girl/Run__007.png);
+        transform: translate(-40px, 0);
+    }
+
+    80% {
+        background-image: url(image/girl/Run__008.png);
+        transform: translate(-45px, 0);
+    }
+
+    100% {
+        background-image: url(image/girl/Run__009.png);
+        transform: translate(-50px, 0);
+    }
+}
+
+.girl_attack_left {
+    width: 262px;
+    height: 282px;
+    background-image: url(image/girl/Attack__000.png);
+    animation-name: girl_attack;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+.girl_attack_right {
+    width: 262px;
+    height: 282px;
+    background-image: url(image/girl/Attack__000.png);
+    transform: rotateY(180deg);
+    animation-name: girl_attack;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+@keyframes girl_attack {
+    0% {
+        background-image: url(image/girl/Attack__000.png);
+    }
+
+    10% {
+        background-image: url(image/girl/Attack__001.png);
+    }
+
+    20% {
+        background-image: url(image/girl/Attack__002.png);
+    }
+
+    30% {
+        background-image: url(image/girl/Attack__003.png);
+    }
+
+    40% {
+        background-image: url(image/girl/Attack__004.png);
+    }
+
+    50% {
+        background-image: url(image/girl/Attack__005.png);
+    }
+
+    60% {
+        background-image: url(image/girl/Attack__006.png);
+    }
+
+    70% {
+        background-image: url(image/girl/Attack__007.png);
+    }
+
+    80% {
+        background-image: url(image/girl/Attack__008.png);
+    }
+
+    100% {
+        background-image: url(image/girl/Attack__009.png);
+    }
+}
+
+
+.girl_idle_left {
+    width: 145px;
+    height: 250px;
+    background-image: url(image/girl/Idle__000.png);
+    animation-name: girl_idle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+.girl_idle_right {
+    width: 145px;
+    height: 250px;
+    transform: rotateY(180deg);
+    background-image: url(image/girl/Idle__000.png);
+    animation-name: girl_idle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+@keyframes girl_idle {
+    0% {
+        background-image: url(image/girl/Idle__000.png);
+    }
+
+    10% {
+        background-image: url(image/girl/Idle__001.png);
+    }
+
+    20% {
+        background-image: url(image/girl/Idle__002.png);
+    }
+
+    30% {
+        background-image: url(image/girl/Idle__003.png);
+    }
+
+    40% {
+        background-image: url(image/girl/Idle__004.png);
+    }
+
+    50% {
+        background-image: url(image/girl/Idle__005.png);
+    }
+
+    60% {
+        background-image: url(image/girl/Idle__006.png);
+    }
+
+    70% {
+        background-image: url(image/girl/Idle__007.png);
+    }
+
+    80% {
+        background-image: url(image/girl/Idle__008.png);
+    }
+
+    100% {
+        background-image: url(image/girl/Idle__009.png);
+    }
+}
+
+.girl_Jump_left {
+    width: 200px;
+    height: 221px;
+    background-image: url(image/girl/Jump__000.png);
+    animation-name: girl_jump_animation;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+.girl_Jump_right {
+    width: 200px;
+    height: 221px;
+    background-image: url(image/girl/Jump__000.png);
+    transform: rotateY(190deg);
+    animation-name: girl_jump_animation;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+@keyframes girl_jump_animation {
+    0% {
+        background-image: url(image/girl/Jump__000.png);
+        transform: translate(0, 0px);
+    }
+
+    10% {
+        background-image: url(image/girl/Jump__001.png);
+        transform: translate(0, 20px);
+    }
+
+    20% {
+        background-image: url(image/girl/Jump__002.png);
+        transform: translate(0, 40px);
+    }
+
+    30% {
+        background-image: url(image/girl/Jump__003.png);
+        transform: translate(0, 60px);
+    }
+
+    40% {
+        background-image: url(image/girl/Jump__004.png);
+        transform: translate(0, 80px);
+    }
+
+    50% {
+        background-image: url(image/girl/Jump__005.png);
+        transform: translate(0, 60px);
+    }
+
+    60% {
+        background-image: url(image/girl/Jump__006.png);
+        transform: translate(0, 40px);
+    }
+
+    70% {
+        background-image: url(image/girl/Jump__007.png);
+        transform: translate(0, 20px);
+    }
+
+    80% {
+        background-image: url(image/girl/Jump__008.png);
+        transform: translate(0, 10px);
+    }
+
+    100% {
+        background-image: url(image/girl/Jump__009.png);
+        transform: translate(0, 0);
+    }
+}
+
+.girl_dead_left {
+    width: 289px;
+    height: 299px;
+    background-image: url(image/girl/Dead__000.png);
+    animation-name: girl_Dead;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+.girl_dead_right {
+    width: 289px;
+    height: 299px;
+    background-image: url(image/girl/Dead__000.png);
+    transform: rotateY(180deg);
+    animation-name: girl_Dead;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+}
+
+@keyframes girl_Dead {
+    0% {
+        background-image: url(image/girl/Dead__000.png);
+    }
+
+    10% {
+        background-image: url(image/girl/Dead__001.png);
+    }
+
+    20% {
+        background-image: url(image/girl/Dead__002.png);
+    }
+
+    30% {
+        background-image: url(image/girl/Dead__003.png);
+    }
+
+    40% {
+        background-image: url(image/girl/Dead__004.png);
+    }
+
+    50% {
+        background-image: url(image/girl/Dead__005.png);
+    }
+
+    60% {
+        background-image: url(image/girl/Dead__006.png);
+    }
+
+    70% {
+        background-image: url(image/girl/Dead__007.png);
+    }
+
+    80% {
+        background-image: url(image/girl/Dead__008.png);
+    }
+
+    100% {
+        background-image: url(image/girl/Dead__009.png);
+    }
+}

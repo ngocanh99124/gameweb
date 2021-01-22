@@ -1,0 +1,132 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Content/css/pick_avt.css" type="text/css" />
+
+    <style>
+        body {
+            background: url('/Content/image/background.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+    <script src="/Content/js/jquery-2.2.3.min.js"></script>
+
+</head>
+<body>
+    <span id="IP" style="display:none"></span> 
+    <div class="charecterchon">
+        <button onclick="chon()" style="width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;background-color:rgba(0,0,0,0.2)">
+            <div class="btn btn-outline effect-scale">
+                PICK
+            </div>
+        </button>
+    </div>
+
+
+    <div class="boy" id="boy" style="left:20%; right:20%; top :20%; bottom: 30%; display:none"></div>
+    <div class="girl" id="girl" style="left: 20%; right: 20%; top: 20%; bottom: 30%; display: none"></div>
+    <button class="next" style="right: 20%;" onclick="increase()"> NEXT</button>
+    <button class="prev" style="left:20%;" onclick="decrease()"> PRE </button>
+    <script type="text/javascript">
+        var slideIndex = 0;
+        //0:boy 1:girl 2:robot
+        var IP = '@System.Configuration.ConfigurationManager.AppSettings["IP"]';
+        
+    function showSlides(n) {
+
+    document.getElementById("boy").style.display = "none";
+    document.getElementById("girl").style.display = "none";
+    if (n == 0) {
+        document.getElementById("boy").style.display = "inline";
+        return;
+    }
+    if (n == 1) {
+        document.getElementById("girl").style.display = "inline";
+        return;
+    }
+    }
+    showSlides(slideIndex);
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+         }
+        }
+    return "";
+    }
+
+    function increase() {
+    slideIndex = slideIndex + 1;
+    if (slideIndex < 0) slideIndex = 1;
+    if (slideIndex > 1) slideIndex = 0;
+    showSlides(slideIndex);
+    }
+    function decrease() {
+    slideIndex = slideIndex - 1;
+    if (slideIndex < 0) slideIndex = 1;
+    if (slideIndex > 1) slideIndex = 0;
+    showSlides(slideIndex);
+    }
+
+
+    var socket = new WebSocket("ws://localhost:8080/WebApplication5/endpoint");
+        socket.onopen = function () { processOnOpen(); }
+        socket.onclose = function () { processOnClose(); }
+        function processOnClose(message) {
+            console.log("connect to server!");
+        }
+        function processOnOpen() {
+            console.log("close connect!");
+        }
+        function chon() {
+
+            var avt;
+            if (document.getElementById("boy").style.display == "inline")
+                avt = 0;
+            else
+                avt = 1;
+            var id = getCookie("userID");
+            var json = { "status": 0, "player": id, "avt": avt };
+            var mess = JSON.stringify(json);
+            socket.send(mess);
+             $.ajax({
+                 url: '@Url.Action("setCookie","Play")',
+                 type: 'POST',
+                 data: { avt: avt },
+                 success: function () {
+                     window.location.href = '@Url.Action("waiting","Play")';
+                },
+                error: function (error) {
+                  alert('error');
+                }
+
+             });
+        }
+
+    </script>
+
+</body>
+
+</html>
+

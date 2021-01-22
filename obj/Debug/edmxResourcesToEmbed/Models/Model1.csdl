@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BanBe">
+    <Key>
+      <PropertyRef Name="Ten1" />
+      <PropertyRef Name="Ten2" />
+    </Key>
+    <Property Name="Ten1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ten2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TG" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__BanBe__Ten1__286302EC" FromRole="BanBe" ToRole="NguoiChoi" />
+    <NavigationProperty Name="NguoiChoi1" Relationship="Self.FK__BanBe__Ten2__29572725" FromRole="BanBe" ToRole="NguoiChoi" />
+  </EntityType>
+  <EntityType Name="LoiMoiKB">
+    <Key>
+      <PropertyRef Name="TenGui" />
+      <PropertyRef Name="TenNhan" />
+    </Key>
+    <Property Name="TenGui" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TG" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NguoiChoi" Relationship="Self.FK__LoiMoiKB__TenGui__2E1BDC42" FromRole="LoiMoiKB" ToRole="NguoiChoi" />
+    <NavigationProperty Name="NguoiChoi1" Relationship="Self.FK__LoiMoiKB__TenNha__2F10007B" FromRole="LoiMoiKB" ToRole="NguoiChoi" />
+  </EntityType>
+  <EntityType Name="NguoiChoi">
+    <Key>
+      <PropertyRef Name="Ten" />
+    </Key>
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CapDo" Type="Int32" />
+    <Property Name="HinhAnh" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BanBes" Relationship="Self.FK__BanBe__Ten1__286302EC" FromRole="NguoiChoi" ToRole="BanBe" />
+    <NavigationProperty Name="BanBes1" Relationship="Self.FK__BanBe__Ten2__29572725" FromRole="NguoiChoi" ToRole="BanBe" />
+    <NavigationProperty Name="LoiMoiKBs" Relationship="Self.FK__LoiMoiKB__TenGui__2E1BDC42" FromRole="NguoiChoi" ToRole="LoiMoiKB" />
+    <NavigationProperty Name="LoiMoiKBs1" Relationship="Self.FK__LoiMoiKB__TenNha__2F10007B" FromRole="NguoiChoi" ToRole="LoiMoiKB" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__BanBe__Ten1__286302EC">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="BanBe" Type="Self.BanBe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="BanBe">
+        <PropertyRef Name="Ten1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BanBe__Ten2__29572725">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="BanBe" Type="Self.BanBe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="BanBe">
+        <PropertyRef Name="Ten2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoiMoiKB__TenGui__2E1BDC42">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="LoiMoiKB" Type="Self.LoiMoiKB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="LoiMoiKB">
+        <PropertyRef Name="TenGui" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoiMoiKB__TenNha__2F10007B">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="LoiMoiKB" Type="Self.LoiMoiKB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="LoiMoiKB">
+        <PropertyRef Name="TenNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameSQLEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BanBes" EntityType="Self.BanBe" />
+    <EntitySet Name="LoiMoiKBs" EntityType="Self.LoiMoiKB" />
+    <EntitySet Name="NguoiChois" EntityType="Self.NguoiChoi" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__BanBe__Ten1__286302EC" Association="Self.FK__BanBe__Ten1__286302EC">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="BanBe" EntitySet="BanBes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BanBe__Ten2__29572725" Association="Self.FK__BanBe__Ten2__29572725">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="BanBe" EntitySet="BanBes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoiMoiKB__TenGui__2E1BDC42" Association="Self.FK__LoiMoiKB__TenGui__2E1BDC42">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="LoiMoiKB" EntitySet="LoiMoiKBs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoiMoiKB__TenNha__2F10007B" Association="Self.FK__LoiMoiKB__TenNha__2F10007B">
+      <End Role="NguoiChoi" EntitySet="NguoiChois" />
+      <End Role="LoiMoiKB" EntitySet="LoiMoiKBs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GameSQLModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GameSQLModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

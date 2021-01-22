@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameSQLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BanBe">
+    <Key>
+      <PropertyRef Name="Ten1" />
+      <PropertyRef Name="Ten2" />
+    </Key>
+    <Property Name="Ten1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ten2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TG" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LoiMoiKB">
+    <Key>
+      <PropertyRef Name="TenGui" />
+      <PropertyRef Name="TenNhan" />
+    </Key>
+    <Property Name="TenGui" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenNhan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TG" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NguoiChoi">
+    <Key>
+      <PropertyRef Name="Ten" />
+    </Key>
+    <Property Name="Ten" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+    <Property Name="CapDo" Type="int" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__BanBe__Ten1__286302EC">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="BanBe" Type="Self.BanBe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="BanBe">
+        <PropertyRef Name="Ten1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BanBe__Ten2__29572725">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="BanBe" Type="Self.BanBe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="BanBe">
+        <PropertyRef Name="Ten2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoiMoiKB__TenGui__2E1BDC42">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="LoiMoiKB" Type="Self.LoiMoiKB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="LoiMoiKB">
+        <PropertyRef Name="TenGui" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoiMoiKB__TenNha__2F10007B">
+    <End Role="NguoiChoi" Type="Self.NguoiChoi" Multiplicity="1" />
+    <End Role="LoiMoiKB" Type="Self.LoiMoiKB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiChoi">
+        <PropertyRef Name="Ten" />
+      </Principal>
+      <Dependent Role="LoiMoiKB">
+        <PropertyRef Name="TenNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="GameSQLModelStoreContainer">
+    <EntitySet Name="BanBe" EntityType="Self.BanBe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoiMoiKB" EntityType="Self.LoiMoiKB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NguoiChoi" EntityType="Self.NguoiChoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BanBe__Ten1__286302EC" Association="Self.FK__BanBe__Ten1__286302EC">
+      <End Role="NguoiChoi" EntitySet="NguoiChoi" />
+      <End Role="BanBe" EntitySet="BanBe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BanBe__Ten2__29572725" Association="Self.FK__BanBe__Ten2__29572725">
+      <End Role="NguoiChoi" EntitySet="NguoiChoi" />
+      <End Role="BanBe" EntitySet="BanBe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoiMoiKB__TenGui__2E1BDC42" Association="Self.FK__LoiMoiKB__TenGui__2E1BDC42">
+      <End Role="NguoiChoi" EntitySet="NguoiChoi" />
+      <End Role="LoiMoiKB" EntitySet="LoiMoiKB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoiMoiKB__TenNha__2F10007B" Association="Self.FK__LoiMoiKB__TenNha__2F10007B">
+      <End Role="NguoiChoi" EntitySet="NguoiChoi" />
+      <End Role="LoiMoiKB" EntitySet="LoiMoiKB" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

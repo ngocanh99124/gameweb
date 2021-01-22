@@ -1,0 +1,110 @@
+﻿@using GameWeb_XL.Models
+@model List<GameWeb_XL.Models.NguoiChoi>
+
+@{
+    ViewBag.Title = "DanhSach";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+
+
+    <script type="text/javascript" src="/Content/js1/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/Content/js1/move-top.js"></script>
+    <script type="text/javascript" src="/Content/js1/easing.js"></script>
+    <script type="text/javascript" src="/Content/js1/startstop-slider.js"></script>
+
+</head>
+<body>
+
+    <div class="container" id="Friends">
+        <div class="well well-sm text-left">
+            <form action="/Friends/DanhSach?id=@User.Identity.Name" method="post">
+                <input type="text" placeholder="Search friends" name="search" />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+        </div>
+        <div class="well well-sm text-left">
+
+            <strong><h3>List Friends</h3></strong>
+
+        </div>
+        <div class="row list-group">
+            @foreach (NguoiChoi it in @Model)
+            {
+
+                <div class="item  col-xs-3 col-lg-3">
+                    <div class="thumbnail">
+                        <a href="/Detail/Details/@it.Ten">
+                            <img class="group list-group-image" src="@it.HinhAnh" alt="User Name" width="300">
+                        </a>
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading"> @it.Ten</h4>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+
+                                    <p class="lead"> @it.CapDo</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="@Url.Action("HuyKB", "Friends", new { Ten1 = @Request.Cookies["userID"].Value, Ten2 = it.Ten })">Unfriend</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+    <div class="container" id="NotFriends">
+        @{
+            Html.RenderAction("ToanBoDanhSach1");
+        }
+    </div>
+    <div class="container" id="FriendsRequest">
+        @{
+            Html.RenderAction("LoiMoiKB");
+        }
+    </div>
+
+    <div class="container" id="YouRequest">
+        @{
+            Html.RenderAction("DaGuiLoiMoi");
+        }
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#list').click(function (event) { event.preventDefault(); $('#products .item').addClass('list-group-item'); });
+            $('#grid').click(function (event) {
+                event.preventDefault(); $('#products .item').removeClass('list-group-item');
+                $('#products .item').addClass('grid-group-item');
+            });
+        });</script>
+    <script type="text/javascript">
+        $("#HuyKB").click(function (event)){
+            if (!$("HuyKB").hasClass("disabled")) {
+                $.ajax({
+                    url: "User/UpdateCheckBoxes",
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    traditional: true,
+                    data: JSON.stringify({ requiresSetupArray: requiresSetupArray, disabledArray: disabledArray }),
+                    success: function (data) {
+                        button.attr('value', 'Save Checkbox Changes');
+                        button.addClass('disabled');
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

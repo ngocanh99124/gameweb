@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.title = "";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <link rel="stylesheet" href="/Content/Site.css">
+    <script src="/Content/login.js"></script>
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="lb-header">
+            <a href="/Login/login" id="login-box-link">Sign Up</a>
+            <a href="#" class="active" id="signup-box-link">Login</a>
+
+        </div>
+        <div class="social-login">
+            <a href="#">
+                <i class="fa fa-facebook fa-lg"></i>
+                Sign up with facebook
+            </a>
+            <a href="#">
+                <i class="fa fa-google-plus fa-lg"></i>
+                Sign up with Google
+            </a>
+        </div>
+
+        <form class="email-signup" action="Create" method="post">
+            <div class="u-form-group">
+                <input type="text" name="username" id="username" size="52" placeholder="Username" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" name="password1" id="password1" placeholder="Password" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" onkeyup="show()" id="password2" placeholder="Confirm Password" />
+            </div>
+            <span id="match" style="text-align:center; margin-left:15px"></span>
+            <div class="u-form-group">
+                <button onclick="show()" id="signup">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        var check = 1;
+        function show() {
+            var pass1 = document.getElementById("password1").value;
+            var pass2 = document.getElementById("password2").value;
+            if (pass1 != pass2) {
+                document.getElementById("match").style.color = "red";
+                document.getElementById("match").innerHTML = "Don't match";
+                check = 0;
+                //document.getElementById("match").style.transitionDelay = 2s;
+            }
+            else {
+                document.getElementById("match").style.color = "green";
+                document.getElementById("match").innerHTML = "correct";
+            }
+        }
+    </script>
+    
+    @if (@ViewBag.Mess != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Mess")
+            });
+        </script>
+    }
+    
+</body>
+</html>

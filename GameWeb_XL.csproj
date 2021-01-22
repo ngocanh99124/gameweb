@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF71E691-B5F4-4B60-B33F-BE7916117406}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameWeb_XL</RootNamespace>
+    <AssemblyName>GameWeb_XL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44328</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DbModules\DbNguoiChoi.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\newController.cs" />
+    <Compile Include="Controllers\PlayController.cs" />
+    <Compile Include="Controllers\ValuesController1.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\BanBe.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomRole.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LoiMoiKB.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model11.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model2.cs" />
+    <Compile Include="Models\Model3.cs" />
+    <Compile Include="Models\NguoiChoi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TwoModel.cs" />
+    <Compile Include="Modelx.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animation-boy.css" />
+    <Content Include="Content\animation_girl.css" />
+    <Content Include="Content\bg.png" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\characters.css" />
+    <Content Include="Content\css1\easy-responsive-tabs.css" />
+    <Content Include="Content\css1\font-awesome.min.css" />
+    <Content Include="Content\css1\global.css" />
+    <Content Include="Content\css1\icomoon.css" />
+    <Content Include="Content\css1\slider.css" />
+    <Content Include="Content\css1\style1.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\detail.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\image1\background.jpg" />
+    <Content Include="Content\css\image1\boy\Attack__000.png" />
+    <Content Include="Content\css\image1\boy\Attack__001.png" />
+    <Content Include="Content\css\image1\boy\Attack__002.png" />
+    <Content Include="Content\css\image1\boy\Attack__003.png" />
+    <Content Include="Content\css\image1\boy\Attack__004.png" />
+    <Content Include="Content\css\image1\boy\Attack__005.png" />
+    <Content Include="Content\css\image1\boy\Attack__006.png" />
+    <Content Include="Content\css\image1\boy\Attack__007.png" />
+    <Content Include="Content\css\image1\boy\Attack__008.png" />
+    <Content Include="Content\css\image1\boy\Attack__009.png" />
+    <Content Include="Content\css\image1\boy\BoyHurt_000.png" />
+    <Content Include="Content\css\image1\boy\BoyHurt_001.png" />
+    <Content Include="Content\css\image1\boy\BoyHurt_003.png" />
+    <Content Include="Content\css\image1\boy\Dead__000.png" />
+    <Content Include="Content\css\image1\boy\Dead__001.png" />
+    <Content Include="Content\css\image1\boy\Dead__002.png" />
+    <Content Include="Content\css\image1\boy\Dead__003.png" />
+    <Content Include="Content\css\image1\boy\Dead__004.png" />
+    <Content Include="Content\css\image1\boy\Dead__005.png" />
+    <Content Include="Content\css\image1\boy\Dead__006.png" />
+    <Content Include="Content\css\image1\boy\Dead__007.png" />
+    <Content Include="Content\css\image1\boy\Dead__008.png" />
+    <Content Include="Content\css\image1\boy\Dead__009.png" />
+    <Content Include="Content\css\image1\boy\Idle__000.png" />
+    <Content Include="Content\css\image1\boy\Idle__001.png" />
+    <Content Include="Content\css\image1\boy\Idle__002.png" />
+    <Content Include="Content\css\image1\boy\Idle__003.png" />
+    <Content Include="Content\css\image1\boy\Idle__004.png" />
+    <Content Include="Content\css\image1\boy\Idle__005.png" />
+    <Content Include="Content\css\image1\boy\Idle__006.png" />
+    <Content Include="Content\css\image1\boy\Idle__007.png" />
+    <Content Include="Content\css\image1\boy\Idle__008.png" />
+    <Content Include="Content\css\image1\boy\Idle__009.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__000.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__001.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__002.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__003.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__004.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__005.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__006.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__007.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__008.png" />
+    <Content Include="Content\css\image1\boy\Jump_Attack__009.png" />
+    <Content Include="Content\css\image1\boy\Jump__000.png" />
+    <Content Include="Content\css\image1\boy\Jump__001.png" />
+    <Content Include="Content\css\image1\boy\Jump__002.png" />
+    <Content Include="Content\css\image1\boy\Jump__003.png" />
+    <Content Include="Content\css\image1\boy\Jump__004.png" />
+    <Content Include="Content\css\image1\boy\Jump__005.png" />
+    <Content Include="Content\css\image1\boy\Jump__006.png" />
+    <Content Include="Content\css\image1\boy\Jump__007.png" />
+    <Content Include="Content\css\image1\boy\Jump__008.png" />
+    <Content Include="Content\css\image1\boy\Jump__009.png" />
+    <Content Include="Content\css\image1\boy\Run__000.png" />
+    <Content Include="Content\css\image1\boy\Run__001.png" />
+    <Content Include="Content\css\image1\boy\Run__002.png" />
+    <Content Include="Content\css\image1\boy\Run__003.png" />
+    <Content Include="Content\css\image1\boy\Run__004.png" />
+    <Content Include="Content\css\image1\boy\Run__005.png" />
+    <Content Include="Content\css\image1\boy\Run__006.png" />
+    <Content Include="Content\css\image1\boy\Run__007.png" />
+    <Content Include="Content\css\image1\boy\Run__008.png" />
+    <Content Include="Content\css\image1\boy\Run__009.png" />
+    <Content Include="Content\css\image1\button\friend list mờ.png" />
+    <Content Include="Content\css\image1\button\friend list.png" />
+    <Content Include="Content\css\image1\button\invite mờ.png" />
+    <Content Include="Content\css\image1\button\invite.png" />
+    <Content Include="Content\css\image1\button\message mờ.png" />
+    <Content Include="Content\css\image1\button\message.png" />
+    <Content Include="Content\css\image1\button\mute.png" />
+    <Content Include="Content\css\image1\button\notification mờ.png" />
+    <Content Include="Content\css\image1\button\notification.png" />
+    <Content Include="Content\css\image1\button\play mờ.png" />
+    <Content Include="Content\css\image1\button\play.png" />
+    <Content Include="Content\css\image1\button\request mờ.png" />
+    <Content Include="Content\css\image1\button\request.png" />
+    <Content Include="Content\css\image1\button\sound.png" />
+    <Content Include="Content\css\image1\girl\Attack__000.png" />
+    <Content Include="Content\css\image1\girl\Attack__001.png" />
+    <Content Include="Content\css\image1\girl\Attack__002.png" />
+    <Content Include="Content\css\image1\girl\Attack__003.png" />
+    <Content Include="Content\css\image1\girl\Attack__004.png" />
+    <Content Include="Content\css\image1\girl\Attack__005.png" />
+    <Content Include="Content\css\image1\girl\Attack__006.png" />
+    <Content Include="Content\css\image1\girl\Attack__007.png" />
+    <Content Include="Content\css\image1\girl\Attack__008.png" />
+    <Content Include="Content\css\image1\girl\Attack__009.png" />
+    <Content Include="Content\css\image1\girl\Dead__000.png" />
+    <Content Include="Content\css\image1\girl\Dead__001.png" />
+    <Content Include="Content\css\image1\girl\Dead__002.png" />
+    <Content Include="Content\css\image1\girl\Dead__003.png" />
+    <Content Include="Content\css\image1\girl\Dead__004.png" />
+    <Content Include="Content\css\image1\girl\Dead__005.png" />
+    <Content Include="Content\css\image1\girl\Dead__006.png" />
+    <Content Include="Content\css\image1\girl\Dead__007.png" />
+    <Content Include="Content\css\image1\girl\Dead__008.png" />
+    <Content Include="Content\css\image1\girl\Dead__009.png" />
+    <Content Include="Content\css\image1\girl\GirlHurt_000.png" />
+    <Content Include="Content\css\image1\girl\GirlHurt_001.png" />
+    <Content Include="Content\css\image1\girl\GirlHurt_002.png" />
+    <Content Include="Content\css\image1\girl\Idle__000.png" />
+    <Content Include="Content\css\image1\girl\Idle__001.png" />
+    <Content Include="Content\css\image1\girl\Idle__002.png" />
+    <Content Include="Content\css\image1\girl\Idle__003.png" />
+    <Content Include="Content\css\image1\girl\Idle__004.png" />
+    <Content Include="Content\css\image1\girl\Idle__005.png" />
+    <Content Include="Content\css\image1\girl\Idle__006.png" />
+    <Content Include="Content\css\image1\girl\Idle__007.png" />
+    <Content Include="Content\css\image1\girl\Idle__008.png" />
+    <Content Include="Content\css\image1\girl\Idle__009.png" />
+    <Content Include="Content\css\image1\girl\Jump__000.png" />
+    <Content Include="Content\css\image1\girl\Jump__001.png" />
+    <Content Include="Content\css\image1\girl\Jump__002.png" />
+    <Content Include="Content\css\image1\girl\Jump__003.png" />
+    <Content Include="Content\css\image1\girl\Jump__004.png" />
+    <Content Include="Content\css\image1\girl\Jump__005.png" />
+    <Content Include="Content\css\image1\girl\Jump__006.png" />
+    <Content Include="Content\css\image1\girl\Jump__007.png" />
+    <Content Include="Content\css\image1\girl\Jump__008.png" />
+    <Content Include="Content\css\image1\girl\Jump__009.png" />
+    <Content Include="Content\css\image1\girl\Run__000.png" />
+    <Content Include="Content\css\image1\girl\Run__001.png" />
+    <Content Include="Content\css\image1\girl\Run__002.png" />
+    <Content Include="Content\css\image1\girl\Run__003.png" />
+    <Content Include="Content\css\image1\girl\Run__004.png" />
+    <Content Include="Content\css\image1\girl\Run__005.png" />
+    <Content Include="Content\css\image1\girl\Run__006.png" />
+    <Content Include="Content\css\image1\girl\Run__007.png" />
+    <Content Include="Content\css\image1\girl\Run__008.png" />
+    <Content Include="Content\css\image1\girl\Run__009.png" />
+    <Content Include="Content\css\image1\robot\Run1.png" />
+    <Content Include="Content\css\image1\robot\Run2.png" />
+    <Content Include="Content\css\image1\robot\Run3.png" />
+    <Content Include="Content\css\image1\robot\Run4.png" />
+    <Content Include="Content\css\image1\robot\Run5.png" />
+    <Content Include="Content\css\image1\robot\Run6.png" />
+    <Content Include="Content\css\image1\robot\Run7.png" />
+    <Content Include="Content\css\image1\robot\Run8.png" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\lightGallery.css" />
+    <Content Include="Content\css\nga.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\owl.theme.css" />
+    <Content Include="Content\css\pick_avt.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\swipebox.css" />
+    <Content Include="Content\dark.jpg" />
+    <Content Include="Content\font1\fontawesome-webfont.svg" />
+    <Content Include="Content\font1\icomoon.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images1\about_img.jpg" />
+    <Content Include="Content\images1\arrow-next.png" />
+    <Content Include="Content\images1\arrow-prev.png" />
+    <Content Include="Content\images1\arrow_up.png" />
+    <Content Include="Content\images1\compare.png" />
+    <Content Include="Content\images1\delivery-img1.jpg" />
+    <Content Include="Content\images1\delivery-img2.jpg" />
+    <Content Include="Content\images1\delivery-img3.jpg" />
+    <Content Include="Content\images1\dribbble.png" />
+    <Content Include="Content\images1\drop_arrow-hover.png" />
+    <Content Include="Content\images1\drop_arrow.png" />
+    <Content Include="Content\images1\facebook.png" />
+    <Content Include="Content\images1\feature-pic1.jpg" />
+    <Content Include="Content\images1\feature-pic2.jpg" />
+    <Content Include="Content\images1\feature-pic3.jpg" />
+    <Content Include="Content\images1\feature-pic4.jpg" />
+    <Content Include="Content\images1\linkedin.png" />
+    <Content Include="Content\images1\list-img.png" />
+    <Content Include="Content\images1\logo.png" />
+    <Content Include="Content\images1\new-pic1.jpg" />
+    <Content Include="Content\images1\new-pic2.jpg" />
+    <Content Include="Content\images1\new-pic3.jpg" />
+    <Content Include="Content\images1\new-pic4.jpg" />
+    <Content Include="Content\images1\newsimg1.jpg" />
+    <Content Include="Content\images1\newsimg2.jpg" />
+    <Content Include="Content\images1\newsimg3.jpg" />
+    <Content Include="Content\images1\preview.jpg" />
+    <Content Include="Content\images1\price-rating.png" />
+    <Content Include="Content\images1\productslide-1.jpg" />
+    <Content Include="Content\images1\productslide-2.jpg" />
+    <Content Include="Content\images1\productslide-3.jpg" />
+    <Content Include="Content\images1\productslide-4.jpg" />
+    <Content Include="Content\images1\productslide-5.jpg" />
+    <Content Include="Content\images1\productslide-6.jpg" />
+    <Content Include="Content\images1\quality-rating.png" />
+    <Content Include="Content\images1\search.png" />
+    <Content Include="Content\images1\skype.png" />
+    <Content Include="Content\images1\slide-1-image.png" />
+    <Content Include="Content\images1\slide-2-image.jpg" />
+    <Content Include="Content\images1\slide-3-image.jpg" />
+    <Content Include="Content\images1\tag.png" />
+    <Content Include="Content\images1\thumbnailslide-1.jpg" />
+    <Content Include="Content\images1\thumbnailslide-2.jpg" />
+    <Content Include="Content\images1\thumbnailslide-3.jpg" />
+    <Content Include="Content\images1\thumbnailslide-4.jpg" />
+    <Content Include="Content\images1\thumbnailslide-5.jpg" />
+    <Content Include="Content\images1\thumbnailslide-6.jpg" />
+    <Content Include="Content\images1\twitter.png" />
+    <Content Include="Content\images1\value-rating.png" />
+    <Content Include="Content\images1\wishlist.png" />
+    <Content Include="Content\images\a1.jpg" />
+    <Content Include="Content\images\a2.jpg" />
+    <Content Include="Content\images\a4.png" />
+    <Content Include="Content\images\ab.jpg" />
+    <Content Include="Content\images\ab1.jpg" />
+    <Content Include="Content\images\arrow.png" />
+    <Content Include="Content\images\Attack__002.png" />
+    <Content Include="Content\images\banner1.jpg" />
+    <Content Include="Content\images\banner2.jpg" />
+    <Content Include="Content\images\banner3.jpg" />
+    <Content Include="Content\images\boy.png" />
+    <Content Include="Content\images\g1.jpg" />
+    <Content Include="Content\images\g2.jpg" />
+    <Content Include="Content\images\g3.jpg" />
+    <Content Include="Content\images\g4.jpg" />
+    <Content Include="Content\images\g5.jpg" />
+    <Content Include="Content\images\g6.jpg" />
+    <Content Include="Content\images\g7.jpg" />
+    <Content Include="Content\images\g8.jpg" />
+    <Content Include="Content\images\game-ninja-top-7-game-ninja-hay-nhat-tren-y8-khong-nen-bo-qua.jpg" />
+    <Content Include="Content\images\girl.png" />
+    <Content Include="Content\images\Idle %286%29.png" />
+    <Content Include="Content\images\left.png" />
+    <Content Include="Content\images\miniform.png" />
+    <Content Include="Content\images\nd1.jpg" />
+    <Content Include="Content\images\nd2.jpg" />
+    <Content Include="Content\images\nd3.jpg" />
+    <Content Include="Content\images\nd4.jpg" />
+    <Content Include="Content\images\nd5.jpg" />
+    <Content Include="Content\images\nd6.jpg" />
+    <Content Include="Content\images\request.jpg" />
+    <Content Include="Content\images\response.jpg" />
+    <Content Include="Content\images\right.png" />
+    <Content Include="Content\images\robot.png" />
+    <Content Include="Content\images\s1.jpg" />
+    <Content Include="Content\images\s1.png" />
+    <Content Include="Content\images\s2.jpg" />
+    <Content Include="Content\images\s2.png" />
+    <Content Include="Content\images\s3.jpg" />
+    <Content Include="Content\images\s3.png" />
+    <Content Include="Content\images\s4.jpg" />
+    <Content Include="Content\images\s4.png" />
+    <Content Include="Content\images\s5.jpg" />
+    <Content Include="Content\images\s6.jpg" />
+    <Content Include="Content\images\s7.jpg" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\service.jpg" />
+    <Content Include="Content\images\trung-nguyen-japanbg.jpg" />
+    <Content Include="Content\image\1.png" />
+    <Content Include="Content\image\2.png" />
+    <Content Include="Content\image\3.png" />
+    <Content Include="Content\image\31390.jpg" />
+    <Content Include="Content\image\3156605.jpg" />
+    <Content Include="Content\image\798.jpg" />
+    <Content Include="Content\image\background.jpg" />
+    <Content Include="Content\image\background1.jpg" />
+    <Content Include="Content\image\boy\Attack__000.png" />
+    <Content Include="Content\image\boy\Attack__001.png" />
+    <Content Include="Content\image\boy\Attack__002.png" />
+    <Content Include="Content\image\boy\Attack__003.png" />
+    <Content Include="Content\image\boy\Attack__004.png" />
+    <Content Include="Content\image\boy\Attack__005.png" />
+    <Content Include="Content\image\boy\Attack__006.png" />
+    <Content Include="Content\image\boy\Attack__007.png" />
+    <Content Include="Content\image\boy\Attack__008.png" />
+    <Content Include="Content\image\boy\Attack__009.png" />
+    <Content Include="Content\image\boy\BoyHurt_000.png" />
+    <Content Include="Content\image\boy\BoyHurt_001.png" />
+    <Content Include="Content\image\boy\BoyHurt_003.png" />
+    <Content Include="Content\image\boy\Dead__000.png" />
+    <Content Include="Content\image\boy\Dead__001.png" />
+    <Content Include="Content\image\boy\Dead__002.png" />
+    <Content Include="Content\image\boy\Dead__003.png" />
+    <Content Include="Content\image\boy\Dead__004.png" />
+    <Content Include="Content\image\boy\Dead__005.png" />
+    <Content Include="Content\image\boy\Dead__006.png" />
+    <Content Include="Content\image\boy\Dead__007.png" />
+    <Content Include="Content\image\boy\Dead__008.png" />
+    <Content Include="Content\image\boy\Dead__009.png" />
+    <Content Include="Content\image\boy\Idle__000.png" />
+    <Content Include="Content\image\boy\Idle__001.png" />
+    <Content Include="Content\image\boy\Idle__002.png" />
+    <Content Include="Content\image\boy\Idle__003.png" />
+    <Content Include="Content\image\boy\Idle__004.png" />
+    <Content Include="Content\image\boy\Idle__005.png" />
+    <Content Include="Content\image\boy\Idle__006.png" />
+    <Content Include="Content\image\boy\Idle__007.png" />
+    <Content Include="Content\image\boy\Idle__008.png" />
+    <Content Include="Content\image\boy\Idle__009.png" />
+    <Content Include="Content\image\boy\Jump__000.png" />
+    <Content Include="Content\image\boy\Jump__001.png" />
+    <Content Include="Content\image\boy\Jump__002.png" />
+    <Content Include="Content\image\boy\Jump__003.png" />
+    <Content Include="Content\image\boy\Jump__004.png" />
+    <Content Include="Content\image\boy\Jump__005.png" />
+    <Content Include="Content\image\boy\Jump__006.png" />
+    <Content Include="Content\image\boy\Jump__007.png" />
+    <Content Include="Content\image\boy\Jump__008.png" />
+    <Content Include="Content\image\boy\Jump__009.png" />
+    <Content Include="Content\image\boy\Run__000.png" />
+    <Content Include="Content\image\boy\Run__001.png" />
+    <Content Include="Content\image\boy\Run__002.png" />
+    <Content Include="Content\image\boy\Run__003.png" />
+    <Content Include="Content\image\boy\Run__004.png" />
+    <Content Include="Content\image\boy\Run__005.png" />
+    <Content Include="Content\image\boy\Run__006.png" />
+    <Content Include="Content\image\boy\Run__007.png" />
+    <Content Include="Content\image\boy\Run__008.png" />
+    <Content Include="Content\image\boy\Run__009.png" />
+    <Content Include="Content\image\button\click.png" />
+    <Content Include="Content\image\button\clicked.png" />
+    <Content Include="Content\image\button\friend list mờ.png" />
+    <Content Include="Content\image\button\friend list.png" />
+    <Content Include="Content\image\button\invite mờ.png" />
+    <Content Include="Content\image\button\invite.png" />
+    <Content Include="Content\image\button\message mờ.png" />
+    <Content Include="Content\image\button\message.png" />
+    <Content Include="Content\image\button\mute.png" />
+    <Content Include="Content\image\button\no.png" />
+    <Content Include="Content\image\button\notification mờ.png" />
+    <Content Include="Content\image\button\notification.png" />
+    <Content Include="Content\image\button\play mờ.png" />
+    <Content Include="Content\image\button\play.png" />
+    <Content Include="Content\image\button\request mờ.png" />
+    <Content Include="Content\image\button\request.png" />
+    <Content Include="Content\image\button\sound.png" />
+    <Content Include="Content\image\button\yes.png" />
+    <Content Include="Content\image\download.jpg" />
+    <Content Include="Content\image\girl\Attack__000.png" />
+    <Content Include="Content\image\girl\Attack__001.png" />
+    <Content Include="Content\image\girl\Attack__002.png" />
+    <Content Include="Content\image\girl\Attack__003.png" />
+    <Content Include="Content\image\girl\Attack__004.png" />
+    <Content Include="Content\image\girl\Attack__005.png" />
+    <Content Include="Content\image\girl\Attack__006.png" />
+    <Content Include="Content\image\girl\Attack__007.png" />
+    <Content Include="Content\image\girl\Attack__008.png" />
+    <Content Include="Content\image\girl\Attack__009.png" />
+    <Content Include="Content\image\girl\Dead__000.png" />
+    <Content Include="Content\image\girl\Dead__001.png" />
+    <Content Include="Content\image\girl\Dead__002.png" />
+    <Content Include="Content\image\girl\Dead__003.png" />
+    <Content Include="Content\image\girl\Dead__004.png" />
+    <Content Include="Content\image\girl\Dead__005.png" />
+    <Content Include="Content\image\girl\Dead__006.png" />
+    <Content Include="Content\image\girl\Dead__007.png" />
+    <Content Include="Content\image\girl\Dead__008.png" />
+    <Content Include="Content\image\girl\Dead__009.png" />
+    <Content Include="Content\image\girl\GirlHurt_000.png" />
+    <Content Include="Content\image\girl\GirlHurt_001.png" />
+    <Content Include="Content\image\girl\GirlHurt_002.png" />
+    <Content Include="Content\image\girl\Idle__000.png" />
+    <Content Include="Content\image\girl\Idle__001.png" />
+    <Content Include="Content\image\girl\Idle__002.png" />
+    <Content Include="Content\image\girl\Idle__003.png" />
+    <Content Include="Content\image\girl\Idle__004.png" />
+    <Content Include="Content\image\girl\Idle__005.png" />
+    <Content Include="Content\image\girl\Idle__006.png" />
+    <Content Include="Content\image\girl\Idle__007.png" />
+    <Content Include="Content\image\girl\Idle__008.png" />
+    <Content Include="Content\image\girl\Idle__009.png" />
+    <Content Include="Content\image\girl\Jump__000.png" />
+    <Content Include="Content\image\girl\Jump__001.png" />
+    <Content Include="Content\image\girl\Jump__002.png" />
+    <Content Include="Content\image\girl\Jump__003.png" />
+    <Content Include="Content\image\girl\Jump__004.png" />
+    <Content Include="Content\image\girl\Jump__005.png" />
+    <Content Include="Content\image\girl\Jump__006.png" />
+    <Content Include="Content\image\girl\Run__000.png" />
+    <Content Include="Content\image\girl\Run__001.png" />
+    <Content Include="Content\image\girl\Run__002.png" />
+    <Content Include="Content\image\girl\Run__003.png" />
+    <Content Include="Content\image\girl\Run__004.png" />
+    <Content Include="Content\image\girl\Run__005.png" />
+    <Content Include="Content\image\girl\Run__006.png" />
+    <Content Include="Content\image\girl\Run__007.png" />
+    <Content Include="Content\image\girl\Run__008.png" />
+    <Content Include="Content\image\girl\Run__009.png" />
+    <Content Include="Content\image\GrassSprite.png" />
+    <Content Include="Content\image\GrassThinSprite.png" />
+    <Content Include="Content\image\icons\favicon.ico" />
+    <Content Include="Content\image\icons\icon-google.png" />
+    <Content Include="Content\image\icons\map-marker.png" />
+    <Content Include="Content\image\ninja_info.png" />
+    <Content Include="Content\image\PlankSprite.png" />
+    <Content Include="Content\image\play.js" />
+    <Content Include="Content\image\robot\Dead %281%29.png" />
+    <Content Include="Content\image\robot\Dead %2810%29.png" />
+    <Content Include="Content\image\robot\Dead %282%29.png" />
+    <Content Include="Content\image\robot\Dead %283%29.png" />
+    <Content Include="Content\image\robot\Dead %284%29.png" />
+    <Content Include="Content\image\robot\Dead %285%29.png" />
+    <Content Include="Content\image\robot\Dead %286%29.png" />
+    <Content Include="Content\image\robot\Dead %287%29.png" />
+    <Content Include="Content\image\robot\Dead %288%29.png" />
+    <Content Include="Content\image\robot\Dead %289%29.png" />
+    <Content Include="Content\image\robot\Hurt %281%29.png" />
+    <Content Include="Content\image\robot\Hurt %282%29.png" />
+    <Content Include="Content\image\robot\Hurt %283%29.png" />
+    <Content Include="Content\image\robot\Idle %281%29.png" />
+    <Content Include="Content\image\robot\Idle %2810%29.png" />
+    <Content Include="Content\image\robot\Idle %282%29.png" />
+    <Content Include="Content\image\robot\Idle %283%29.png" />
+    <Content Include="Content\image\robot\Idle %284%29.png" />
+    <Content Include="Content\image\robot\Idle %285%29.png" />
+    <Content Include="Content\image\robot\Idle %286%29.png" />
+    <Content Include="Content\image\robot\Idle %287%29.png" />
+    <Content Include="Content\image\robot\Idle %288%29.png" />
+    <Content Include="Content\image\robot\Idle %289%29.png" />
+    <Content Include="Content\image\robot\Jump %281%29.png" />
+    <Content Include="Content\image\robot\Jump %2810%29.png" />
+    <Content Include="Content\image\robot\Jump %282%29.png" />
+    <Content Include="Content\image\robot\Jump %283%29.png" />
+    <Content Include="Content\image\robot\Jump %284%29.png" />
+    <Content Include="Content\image\robot\Jump %285%29.png" />
+    <Content Include="Content\image\robot\Jump %286%29.png" />
+    <Content Include="Content\image\robot\Jump %287%29.png" />
+    <Content Include="Content\image\robot\Jump %288%29.png" />
+    <Content Include="Content\image\robot\Jump %289%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %281%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %282%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %283%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %284%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %285%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %286%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %287%29.png" />
+    <Content Include="Content\image\robot\JumpMelee %288%29.png" />
+    <Content Include="Content\image\robot\JumpShoot %281%29.png" />
+    <Content Include="Content\image\robot\JumpShoot %282%29.png" />
+    <Content Include="Content\image\robot\JumpShoot %283%29.png" />
+    <Content Include="Content\image\robot\JumpShoot %284%29.png" />
+    <Content Include="Content\image\robot\JumpShoot %285%29.png" />
+    <Content Include="Content\image\robot\Melee %281%29.png" />
+    <Content Include="Content\image\robot\Melee %282%29.png" />
+    <Content Include="Content\image\robot\Melee %283%29.png" />
+    <Content Include="Content\image\robot\Melee %284%29.png" />
+    <Content Include="Content\image\robot\Melee %285%29.png" />
+    <Content Include="Content\image\robot\Melee %286%29.png" />
+    <Content Include="Content\image\robot\Melee %287%29.png" />
+    <Content Include="Content\image\robot\Melee %288%29.png" />
+    <Content Include="Content\image\robot\robot\Run1.png" />
+    <Content Include="Content\image\robot\robot\Run2.png" />
+    <Content Include="Content\image\robot\robot\Run3.png" />
+    <Content Include="Content\image\robot\robot\Run4.png" />
+    <Content Include="Content\image\robot\robot\Run5.png" />
+    <Content Include="Content\image\robot\robot\Run6.png" />
+    <Content Include="Content\image\robot\robot\Run7.png" />
+    <Content Include="Content\image\robot\robot\Run8.png" />
+    <Content Include="Content\image\robot\Run %281%29.png" />
+    <Content Include="Content\image\robot\Run %282%29.png" />
+    <Content Include="Content\image\robot\Run %283%29.png" />
+    <Content Include="Content\image\robot\Run %284%29.png" />
+    <Content Include="Content\image\robot\Run %285%29.png" />
+    <Content Include="Content\image\robot\Run %286%29.png" />
+    <Content Include="Content\image\robot\Run %287%29.png" />
+    <Content Include="Content\image\robot\Run %288%29.png" />
+    <Content Include="Content\image\robot\Run1.png" />
+    <Content Include="Content\image\robot\Run2.png" />
+    <Content Include="Content\image\robot\Run3.png" />
+    <Content Include="Content\image\robot\Run4.png" />
+    <Content Include="Content\image\robot\Run5.png" />
+    <Content Include="Content\image\robot\Run6.png" />
+    <Content Include="Content\image\robot\Run7.png" />
+    <Content Include="Content\image\robot\Run8.png" />
+    <Content Include="Content\image\robot\RunShoot %281%29.png" />
+    <Content Include="Content\image\robot\RunShoot %282%29.png" />
+    <Content Include="Content\image\robot\RunShoot %283%29.png" />
+    <Content Include="Content\image\robot\RunShoot %284%29.png" />
+    <Content Include="Content\image\robot\RunShoot %285%29.png" />
+    <Content Include="Content\image\robot\RunShoot %286%29.png" />
+    <Content Include="Content\image\robot\RunShoot %287%29.png" />
+    <Content Include="Content\image\robot\RunShoot %288%29.png" />
+    <Content Include="Content\image\robot\RunShoot %289%29.png" />
+    <Content Include="Content\image\robot\Shoot %281%29.png" />
+    <Content Include="Content\image\robot\Shoot %282%29.png" />
+    <Content Include="Content\image\robot\Shoot %283%29.png" />
+    <Content Include="Content\image\robot\Shoot %284%29.png" />
+    <Content Include="Content\image\robot\Slide %281%29.png" />
+    <Content Include="Content\image\robot\Slide %2810%29.png" />
+    <Content Include="Content\image\robot\Slide %282%29.png" />
+    <Content Include="Content\image\robot\Slide %283%29.png" />
+    <Content Include="Content\image\robot\Slide %284%29.png" />
+    <Content Include="Content\image\robot\Slide %285%29.png" />
+    <Content Include="Content\image\robot\Slide %286%29.png" />
+    <Content Include="Content\image\robot\Slide %287%29.png" />
+    <Content Include="Content\image\robot\Slide %288%29.png" />
+    <Content Include="Content\image\robot\Slide %289%29.png" />
+    <Content Include="Content\image\send.png" />
+    <Content Include="Content\image\send1.jpg" />
+    <Content Include="Content\image\SkySprite.png" />
+    <Content Include="Content\image\vs1.jpg" />
+    <Content Include="Content\image\vs2.jpg" />
+    <Content Include="Content\image\vs3.jpg" />
+    <Content Include="Content\js1\easing.js" />
+    <Content Include="Content\js1\easyResponsiveTabs.js" />
+    <Content Include="Content\js1\jquery-1.7.2.min.js" />
+    <Content Include="Content\js1\jquery.accordion.js" />
+    <Content Include="Content\js1\jquery.easing.js" />
+    <Content Include="Content\js1\move-top.js" />
+    <Content Include="Content\js1\script.js" />
+    <Content Include="Content\js1\slides.min.jquery.js" />
+    <Content Include="Content\js1\startstop-slider.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\easing.js" />
+    <Content Include="Content\js\JavaScript.js" />
+    <Content Include="Content\js\jquery-2.2.3.min.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\jquery.adipoli.min.js" />
+    <Content Include="Content\js\jquery.flexslider.js" />
+    <Content Include="Content\js\jquery.swipebox.min.js" />
+    <Content Include="Content\js\lightGallery.js" />
+    <Content Include="Content\js\move-top.js" />
+    <Content Include="Content\js\ninja.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\owl.theme.css" />
+    <Content Include="Content\js\responsiveslides.min.js" />
+    <Content Include="Content\js\simplyCountdown.js" />
+    <Content Include="Content\login.js" />
+    <Content Include="Content\play.js" />
+    <Content Include="Content\Style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model11.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\font1\.DS_Store" />
+    <Content Include="Content\font1\Amble-Regular-webfont.ttf" />
+    <Content Include="Content\font1\fontawesome-webfont.eot" />
+    <Content Include="Content\font1\fontawesome-webfont.ttf" />
+    <Content Include="Content\font1\fontawesome-webfont.woff" />
+    <Content Include="Content\font1\fontawesome-webfont.woff2" />
+    <Content Include="Content\font1\FontAwesome.otf" />
+    <Content Include="Content\font1\icomoon.eot" />
+    <Content Include="Content\font1\icomoon.ttf" />
+    <Content Include="Content\font1\icomoon.woff" />
+    <Content Include="Content\images1\Thumbs.db" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Detail\a2.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Login\Game.cshtml" />
+    <Content Include="Views\Shared\Layout1.cshtml" />
+    <Content Include="Views\Login\DanhSach.cshtml" />
+    <Content Include="Views\Login\Signup.cshtml" />
+    <Content Include="Views\Detail\Index.cshtml" />
+    <Content Include="Views\Home\AuthorHome.cshtml" />
+    <Content Include="Views\Play\Index.cshtml" />
+    <Content Include="Views\Play\pickAVT.cshtml" />
+    <Content Include="Views\Play\waiting.cshtml" />
+    <Content Include="Views\Play\accept.cshtml" />
+    <Content Include="Views\Play\ready.cshtml" />
+    <Content Include="Views\Friends\AllFr.cshtml" />
+    <Content Include="Views\Friends\DaGuiLoiMoi.cshtml" />
+    <Content Include="Views\Friends\DanhSach.cshtml" />
+    <Content Include="Views\Friends\LoiMoiKB.cshtml" />
+    <Content Include="Views\Friends\ToanBoDanhSach1.cshtml" />
+    <Content Include="Views\Login\ChangePass.cshtml" />
+    <Content Include="Views\Detail\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\new\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52086</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44328/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

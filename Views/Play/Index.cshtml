@@ -1,0 +1,410 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>battle</title>
+    <style>
+        .body {
+            background-color: black;
+            background-image: url('/Content/image/background1.jpg');
+            background-size: cover;
+            top:10%;
+            width: 100%;
+            height: 90%;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <link rel="stylesheet" href="~/Content/animation_girl.css">
+
+</head>
+<body>
+    <div style="position:absolute;top:0%;width:100%;bottom:90%; color:red; background-color:cornflowerblue;font:500">
+        <a href="@Url.Action("AuthorHome","Home")" style="top:3%;right:3%;"><span>HOME</span></a>
+        <div style="color:red; position:absolute; left:5%; top:40%;display:inline">
+            <span id="blood1">Blood1</span>
+        </div>
+        <div style="color:red; position:absolute; right:5%; top:40%;display:inline">
+            <span id="blood2">Blood2</span>
+        </div>
+        <span id="game" style="color:aliceblue; position:absolute; left:47%; top:7%;font:900"></span>
+
+    </div>
+
+    <canvas class="body" id="canvas" style="position:absolute">
+
+    </canvas>
+    <div style="position:absolute; left : 1%; bottom:5%; height:9%; width:28%; background-color:rgba(255, 255, 255, 0.5);">
+        <div style="position: absolute;left: 4%;top: 25%;height: 10%;width: 30%">
+            <textarea id="TextArea1" rows="2" cols="40" style="bottom:5%; width:calc(220%); height:calc(500%); resize:none"></textarea>
+        </div>
+        
+
+        <input id="Submit1" type="image" src="/Content/image/button/click.png"
+               style="position:absolute; width:20%; height:50%; bottom:20%; left :78%; background-size:cover" onclick="myfunc()"/>
+
+    </div>
+
+<script type="text/javascript">
+    
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+         }
+        }
+    return "";
+    }
+var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
+
+canvas.width = 1900; canvas.height = 900;
+var girl = "girl/", boy = "boy/";
+var source_ = "/Content/image/";
+var left = 1, right = -1;
+var Idle = 0, Run = 1, Attack = 2, Jump = 3, Dead = 4, Hurt = 5;
+var width = [145, 188, 262, 200];
+var height = [250, 260, 282, 221];
+var sl = [9, 9, 9, 9];
+var name_ = ["Idle__", "Run__", "Attack__", "Jump__"];
+    var speed = 10, high = 45, change_image = 50, read_key = 50, blood_size = 10, on_game = 1, maxblood = 100, max_mess = 30;
+var socket = new WebSocket("ws://localhost:8080/WebApplication5/endpoint");
+socket.onopen = function () { processOnOpen(); }
+socket.onclose = function () { processOnClose(); }
+function processOnClose() {
+    console.log("close to server!");
+    }
+ctx.font = "31px Arial";
+
+function processOnOpen() {
+    console.log("connect connect!");
+    var id = getCookie("userID");
+    var a = 0;
+    if (player1.avt == "girl/")
+        a = 1;
+    var json = { "status": 0, "player": id, "avt": a };
+    var mess = JSON.stringify(json);
+    socket.send(mess);
+    json = { "status": -2, "player": id };
+    mess = JSON.stringify(json);
+    socket.send(mess);
+}
+
+var list = [];
+
+var text1 = {
+    x: 0, y: 0, w: 50, h: 20, mess: '', time_exist :0
+    }
+
+var text2 = {
+    x: 0, h: 0, w: 50, h: 20, mess: '', time_exist :0
+    }
+
+function drawText(mess, text2, player2, time) {
+    ctx.clearRect(text2.x-20, text2.y - text2.h-10, text2.w+21*2, text2.h*2);
+    text2.x = player2.x + 20; text2.y = player2.y - 20;
+    text2.time_exist = time;
+    text2.mess = mess;
+    text2.w = ctx.measureText(mess).width;
+    if (text2.time_exist == 0) return;
+    ctx.beginPath();
+    ctx.rect(text2.x-20, text2.y - text2.h-10, text2.w+20*2, text2.h*2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.fillStyle = "#ff0000";  //<======= here
+    ctx.fillText(text2.mess, text2.x, text2.y);
+   
+    }
+
+
+socket.onmessage = function (mess) {
+    var message = mess.data;
+    var json = JSON.parse(message);
+    if (json.status == 5) {
+        drawText(json.mess,text2, player2, max_mess)
+    }
+    else
+    if (json.status == -2) {
+        if (json.avt == 0)
+            player2.avt = boy;
+        else
+            player2.avt = girl;
+        manager();
+        update();
+    }
+    else
+    list.push(json);
+    }
+
+
+
+var player1 = {
+    x: 50,
+    y: canvas.height - height[Idle]-50,
+    w: width[Idle],
+    h: height[Idle],
+    avt: girl,
+    image: "",
+    direct: left,
+    status: Idle,
+    sl: 0,
+    blood:maxblood
+}
+
+var player2 = {
+    x: canvas.width - width[Idle]-50,
+    y: canvas.height - height[Idle] - 50,
+    w: width[Idle],
+    h: height[Idle],
+    avt: boy,
+    image: "",
+    direct: right,
+    status: Idle,
+    sl: 0,
+    blood:maxblood
+}
+    
+    document.getElementById("blood1").innerHTML = "PLAYER1 : "+String(player1.blood);
+    document.getElementById("blood2").innerHTML = "PLAYER2 : "+String(player2.blood);
+    if (@Request.Cookies["avt"].Value == 0) {
+        player1.avt = boy;
+    }
+    else
+        player1.avt = girl;
+
+
+var keys = [];
+
+function update() {
+    if (on_game == 0)
+        return;
+    if (player1.status == Jump) {
+        setTimeout(update, read_key);
+        return;
+    }
+    if (keys[38]) {
+        if (player1.status != Jump) {
+            player1.status = Jump;
+            player1.sl = 0;
+        }
+    }
+    else {
+        if (keys[39]) {
+            if (player1.direct == left) {
+                player1.status = Run;
+                player1.sl = 0;
+            }
+            else {
+                player1.direct = left;
+                player1.status = Run;
+                player1.sl = 0;
+            }
+        }
+        else {
+            if (keys[37]) {
+                if (player1.direct == right) {
+                    player1.status = Run;
+                    player1.sl = 0;
+                }
+                else {
+                    player1.direct = right;
+                    player1.status = Run;
+                    player1.sl = 0;
+                }
+            }
+            else {
+                if (keys[40]) {
+                    player1.status = Attack;
+                    player1.sl = 0;
+                    if (check) {
+
+                    }
+                }
+            }
+        }
+    }
+
+    setTimeout(update, read_key);
+}
+
+
+function draw(src, x, y, w, h) {
+    var image = new Image();
+    image.src = src;
+    image.onload = function () {
+        ctx.drawImage(image, x, y, w, h);
+    }
+}
+
+function check(x,  y, w, h, xx, yy, ww, hh) {
+    
+    if (w + x > ww + xx) w = ww + xx;
+    else w = w + x;
+    if (h + y > hh + yy) h = hh + yy;
+    else h = h + y;
+    if (x < xx) x = xx;
+    if (y < yy) y = yy;
+    var dt = (w - x) * (h - y);
+    if (dt >= 50) return true;
+    return false;
+}
+
+function calc() {
+    if (player1.blood == 0) {
+        document.getElementById("game").innerHTML = "Game over!";
+        socket.close();
+        on_game = 0;
+    }
+    if (player2.blood == 0) {
+        document.getElementById("game").innerHTML = "You win!";
+        socket.close();
+        on_game = 0;
+    }
+    var x = player1.x, y = player1.y, w = player1.w, h = player1.h,
+        xx = player2.x, yy = player2.y, ww = player2.w, hh = player2.h;
+    var check_ = check(x, y, w, h, xx, yy, ww, hh);
+    var player = getCookie("userID");
+    var json = { "status": 4, "player": player };
+    var mess = JSON.stringify(json);
+    if ((player1.status == Attack)&&(player1.sl == 4)) {
+        if (check_) {
+            player2.blood -= blood_size;
+            socket.send(mess);
+        }
+    }
+    if ((player2.status == Attack)&&(player2.sl == 4))
+        if (check_) {
+            player1.blood -= blood_size;
+        }
+    document.getElementById("blood1").innerHTML = "PLAYER1 : "+String(player1.blood);
+    document.getElementById("blood2").innerHTML = "PLAYER2 : "+String(player2.blood);
+    
+}
+
+
+function sendMessage() {
+    var player = getCookie("userID");
+    var x = player1.x, y = player1.y, w = player1.w, h = player1.h, avt = player1.avt, sl = player1.sl, direct = player1.direct, blood = player1.blood, action = player1.status;
+    var json = { "status": 3, "player": player, "x": x, "y": y, "w": w, "h": h, "avt": avt, "sl": sl, "direct": direct, "blood": blood, "action": action };
+    var mess = JSON.stringify(json);
+    socket.send(mess);
+}
+
+    var remember = {
+        x: player1.x, y: player1.y, w: player1.w, h: player1.h
+    }
+
+var dem = 0;
+function manager() {
+    
+    if (on_game == 0)
+        return;
+    ctx.clearRect(remember.x, remember.y, remember.w, remember.h);
+    var c;
+    if (player1.direct == left) c = "0"; else c = "1";
+    player1.image = source_ + player1.avt + name_[player1.status] + c + "0" + (player1.sl).toString() + ".png";
+    player1.w = width[player1.status];
+    player1.h = height[player1.status];
+    draw(player1.image, player1.x, player1.y, player1.w, player1.h);
+    drawText(text1.mess, text1, player1, text1.time_exist--);
+    
+    remember.x = player1.x; remember.y = player1.y; remember.w = player1.w; remember.h = player1.h;
+    player1.sl += 1;
+    if (player1.sl >= sl[player1.status]) {
+        player1.status = Idle;
+        player1.sl = 0;
+    }
+    if (player1.status == Jump) {
+        if (player1.sl <= 4)
+            player1.y = player1.y - high;
+        else
+            player1.y = player1.y + high;
+    }
+    if (player1.status == Run) {
+        if (player1.direct == left) {
+            if (player1.x + player1.w + speed <= canvas.width) {
+                player1.x = player1.x + speed;
+            }
+            else {
+                player1.status = Idle;
+                player1.sl = 0;
+            }
+        }
+        else {
+            if (player1.x - speed >= 0) {
+                player1.x = player1.x - speed;
+            }
+            else {
+               player1.status = Idle;
+               player1.sl = 0;
+            }
+        }
+    }
+
+    ctx.clearRect(player2.x, player2.y, player2.w, player2.h);
+
+    if (list.length != 0) {
+        var json = list.pop();
+        if (json.status == 4)
+            player1.blood -= blood_size;
+        else {
+            player2.x = canvas.width - json.w - json.x;
+            player2.y = json.y;
+            player2.w = json.w;
+            player2.h = json.h;
+            player2.avt = json.avt;
+            player2.sl = json.sl;
+            player2.status = json.action;
+            player2.direct = -json.direct;
+            player2.blood = json.blood;
+        }        
+        
+    }
+    drawText(text2.mess, text2, player2, text2.time_exist--);
+   
+    if (player2.direct == left) c = "0"; else c = "1";
+    player2.image = source_ + player2.avt + name_[player2.status] + c + "0" + (player2.sl).toString() + ".png";
+    draw(player2.image, player2.x, player2.y, player2.w, player2.h);
+    sendMessage();
+    calc();
+    setTimeout(manager, change_image);
+}
+
+
+
+document.body.addEventListener("keydown", function (e) {
+    keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+    keys[e.keyCode] = false;
+});
+
+    
+
+    function myfunc() {
+        document.getElementById("Submit1").src = "/Content/image/button/clicked.png";
+        var player = getCookie("userID");
+        var mess = document.getElementById("TextArea1").value;
+        var json = { "status": 5, "player": player, "mess": mess };
+        var message = JSON.stringify(json);
+        socket.send(message);
+        document.getElementById("Submit1").src = "/Content/image/button/click.png";
+        drawText(json.mess, text1, player1, max_mess);
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+﻿@using GameWeb_XL.Models
+@model TwoModel
+@{
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Ninja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="/Content/css/nga.css" />
+    <link href="/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// bootstrap-css -->
+    <!-- css -->
+    <link rel="stylesheet" href="/Content/css/nga.css" type="text/css" media="all" />
+    <!--// css -->
+    <!-- font-awesome icons -->
+    <link href="/Content/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- portfolio -->
+    <script src="/Content/js/jquery-2.2.3.min.js"></script>
+
+    <script src="/Content/js/ninja.js"></script>
+    <!-- //font -->
+    <script src="/Content/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <script type="text/javascript" src="/Content/js1/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/Content/js1/move-top.js"></script>
+    <script type="text/javascript" src="/Content/js1/easing.js"></script>
+    <script type="text/javascript" src="/Content/js1/startstop-slider.js"></script>
+</head>
+<body>
+    <dialog id="requ" style="position:absolute; left : -25%; top : 10%; width:20%; height:40%;">
+        <img src="~/Content/images/response.jpg" style="position:absolute; background-size:contain; height:90%; width:90%" />
+
+        <div id="products" class="row list-group">
+            @foreach (var it in @Model.Require)
+            {
+                <div class="item  col-xs-3 col-lg-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading"> @it.Ten</h4>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p typeof="button" class="yes" onclick="moi(@serializer.Serialize(it.Ten))" id=@it.Ten style="position: absolute; width:40px; height: 40px; right:15%; top: 20%" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </dialog>
+    <button></button>
+    <dialog id="invi" style="position:absolute; left : -25%; top : 40%; width:20%; height:40%;">
+        <img src="~/Content/images/request.jpg" style="position:absolute; background-size:contain; height:90%; width:90%" />
+        @Html.Partial("accept")
+    </dialog>
+    <p type="button" class="request" style="position: absolute; width:20%; height: 7%" onclick="request()">
+
+    </p>
+    @if (@Request.Cookies["userID"].Value == "ADMIN")
+    {
+        <a href="@Url.Action("AllFr", "Friends")" class="frlist" style="position: absolute; width:20%; height: 7%">
+        </a>
+    }
+    else
+    { <a href="@Url.Action("DanhSach", "Friends", new { id = @Request.Cookies["userID"].Value })" class="frlist" style="position: absolute; width:20%; height: 7%">
+        </a>
+    }
+
+
+
+    <p type="button" class="invite" style="position: absolute; width:20%; height: 7%" onclick="invite()">
+
+    </p>
+    <div id="avt" style="position: absolute; width : 50%; height: 47%; bottom: 30%; left: 43%">
+
+    </div>
+    <button id="vaogame" onclick="vaogame()" class="play" style="position: fixed; width:20%; height: 17%; bottom: 5%; left: 43%;background-color: rgba(0,0,0,0.2)"> </button>
+    <script type="text/javascript">
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function vaogame() {
+
+            var id = getCookie("userID");
+            var json = { "status": -1, "player": id };
+            var mess = JSON.stringify(json);
+            socket.send(mess);
+        }
+        if (@Request.Cookies["avt"].Value == 1)
+            document.getElementById("avt").className = "girl";
+        else
+            document.getElementById("avt").className = "boy";
+        function request() {
+            var x = document.getElementById("requ");
+            if (x.open == true) {
+                x.open = false;
+            }
+            else {
+                x.open = true;
+            }
+        }
+         function invite() {
+            var x = document.getElementById("invi");
+            if (x.open == true) {
+                x.open = false;
+            } else {
+                x.open = true;
+            }
+        }
+
+
+        var socket = new WebSocket("ws://localhost:8080/WebApplication5/endpoint");
+        socket.onopen = function () { processOnOpen(); }
+        socket.onclose = function () { processOnClose(); }
+        function processOnClose() {
+            console.log("close to server!");
+        }
+        function processOnOpen() {
+            console.log("connect connect!");
+            var id = getCookie("userID");
+            var avt = @Request.Cookies["avt"].Value;
+            var json = { "status": 0, "player": id, "avt": avt };
+            var mess = JSON.stringify(json);
+            socket.send(mess);
+        }
+        var toString = Object.prototype.toString;
+
+        isString = function (obj) {
+            return toString.call(obj) == '[object String]';
+        }
+        function moi(id) {
+            var player = getCookie("userID");
+            var json = {};
+            if (isString(id))
+                json = { "status": 1, "player": player, "friend": id };
+            else {
+                var sid = String(id);
+                json = { "status": 1, "player": player, "friend": sid };
+            }
+
+            var mess = JSON.stringify(json);
+            socket.send(mess);
+        }
+        socket.onmessage=function processOnMessage(mess) {
+            var message = mess.data;
+            var json = JSON.parse(message);
+            var data = JSON.stringify(json);
+            if (json.status == 1) {
+                $.ajax({
+                    url: '@Url.Action("accept","Play")',
+                    type: 'POST',
+                    data: { mess: data },
+                    success: function (data) {
+                        window.location.href = '@Url.Action("waiting","Play")';
+
+                    }
+                });
+            }
+            if (json.status == 2) {
+                window.location.href = '@Url.Action("ready","Play")';
+            }
+        }
+    </script>
+
+</body>
+</html>
